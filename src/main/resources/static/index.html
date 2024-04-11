@@ -3,8 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 </head>
 <body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Bestilling av kinobilleter</h1> <!--Overskrift til siden-->
+            <div class="form">
+                <div class="form-group">
 
+
+                    <table>
+                        <tr>
+                            <td>
+                                Velg film: <!--Tekst til rullmeny-->
+                            </td>
+                            <td>
+                                <label for="film"></label><select id="film" > <!--Her kaller jeg på film, og lager en rull meny med valg-->
+                                <option value="" disabled selected>select a movie</option>
+                                <option value="Biler">Biler</option>
+                                <option value="Marvel">Marvel</option>
+                                <option value="Barbi">Barbi</option>
+                            </select>
+                            </td>
+                            <td>
+                                <p id="feilFilm"  style="color:red"></p> <!--Her kaller jeg på errorfilm, vet det er feil å style i html men synes det er greit når er så lite som det er-->
+                            </td>
+                        </tr>
+                        <!--Nedover er det sammen som blir gjort som i film-->
+                        <tr>
+                            <td>
+                                Antall:
+                            </td>
+                            <td>
+                                <label for="antall"></label><select id="antall">
+                                <option value="" disabled selected>Velg antall</option>
+                                <option value=1>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                            </td>
+                            <td>
+                                <p id="feilAntall" style="color:red"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Fornavn
+                            </td>
+                            <td><label for="fornavn"></label><input type="text" id="fornavn"></td>
+                            <td><p id="feilFornavn"  style="color:red"></p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Etternavn
+                            </td>
+                            <td><label for="etternavn"></label><input type="text" id="etternavn"></td>
+                            <td><p id="feilEtternavn" style="color:red"></p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Telefon nummer
+                            </td>
+                            <td><label for="telefon"></label><input type="text" id="telefon"></td>
+                            <td><p id="feilTelefon" style="color:red"> </p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                E-post
+                            </td>
+                            <td><label for="epost"></label><input type="email" id="epost"></td>
+                            <td><p id="feilEpost" style="color:red"></p></td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-success rounded-pill px-3" onclick="regBillett()">Kjøp billetter</button></td> <!--Her lager jeg bryterren som gjør kjøp av billet mulig, og gjør at de blir lagt inn i arrayet-->
+                        </tr>
+                    </table></div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h2>Kjøpte billetter</h2>
+            <p id="formaterData"></p>
+            <button class="btn btn-danger rounded-pill px-3" onclick="slettallebilletter()">Slett alle billetter</button> <!--Her lager jeg bryteren som gjør sletting av kjøpte billeter og rensker arrayet-->
+            <div id="billetter"></div>
+        </div>
+    </div>
+
+</div>
 </body>
 </html>
