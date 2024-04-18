@@ -1,5 +1,6 @@
 package com.example.oblig3;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -7,19 +8,21 @@ import java.util.List;
 
 @RestController
 public class billeterController {
-    public final List<billeter> billetterReg = new ArrayList<>();
+
+    @Autowired
+    billeterRepository rep;
 
     @PostMapping("/lagre")
     public void Lagre( billeter Billett) {
-        billetterReg.add(Billett);
+        rep.lagreBilleter(Billett);
     }
 
     @GetMapping("/hentalle")
     public List<billeter> hentalle() {
-        return billetterReg;
+        return rep.hentAlleBilleter();
     }
     @DeleteMapping("/slettalle")
     public void slettalle(){
-        billetterReg.clear();
+        rep.slettAlleBilleter();
     }
 }
