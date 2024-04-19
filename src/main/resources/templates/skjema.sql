@@ -1,4 +1,4 @@
-CREATE TABLE billetter
+        CREATE TABLE billeter
 (
     id INTEGER AUTO_INCREMENT NOT NULL,
     film varchar(255) NOT NULL,

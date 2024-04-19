@@ -1,3 +1,4 @@
+let billeter = []
 function regBillett(){
 
     $("#feilFilm").html(" ");
@@ -50,7 +51,7 @@ function regBillett(){
         telefon : telefon
     }
 
-    $.post("/lagre",billet, function (){
+    $.post("/lagre",billeter, function (){
         hentAlle();
     });
 
@@ -91,9 +92,9 @@ function formaterData(billeter){
     let ut = "  <table class='table table-striped'><tr>" +
         "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefon</th><th>E-post</th>" +
         "</tr>";
-    for(let b of billeter){
+    for(const billetter of billeter){
         ut += "<tr>";
-        ut += "<td>"+b.film +"</td><td>"+b.antall +"</td><td>"+b.fornavn +"</td><td>"+b.etternavn +"</td><td>"+b.telefon +"</td><td>"+b.epost +"</td>";
+        ut += "<td>"+billetter.film +"</td><td>"+billetter.antall +"</td><td>"+billetter.fornavn +"</td><td>"+billetter.etternavn +"</td><td>"+billetter.telefon +"</td><td>"+billetter.epost +"</td>";
         ut += "</tr>";
     }
     ut += "</table>";
