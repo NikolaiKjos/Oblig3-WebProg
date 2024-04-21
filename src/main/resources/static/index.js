@@ -89,24 +89,23 @@ function slettallebilletter(){
 }
 
 function formaterData(billeter){
-    var ut = "  <table class='table table-striped'>" +
+    var ut = "<table class='table table-striped'>" +
         "<tr>" +
         "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefon</th><th>E-post</th><th></th><th></th>" +
         "</tr>";
     for(let b of billeter){
-        ut += "<tr>" +
-        "<td>"+billeter[b].film +"</td><td>"+billeter[b].antall +"</td><td>"+billeter[b].fornavn +"</td><td>"+billeter[b].etternavn +"</td><td>"+billeter[b].telefon +"</td><td>"+billeter[b].epost +"</td>"+
-        "<td> <button class='btn btn-danger' onclick='slettEn("+billeter[b].id+")'>Slett</button></td>"+
+        ut +="<tr>" +
+        "<td>"+b.film +"</td><td>"+b.antall +"</td><td>"+b.fornavn +"</td><td>"+b.etternavn +"</td><td>"+b.telefon +"</td><td>"+b.epost +"</td>"+
+        "<td> <button class='btn btn-danger' onclick='slettEn("+b.id+")'>Slett</button></td>"+
         "</tr>";
     }
-
     $("#billeter").html(ut);
 }
 
 function slettEn(id) {
     const url = "/slettEn?id="+id;
     $.get(url, function () {
-        window.location.href = 'index.html'
+        window.location.href = 'index.html';
     });
-}
+};
 

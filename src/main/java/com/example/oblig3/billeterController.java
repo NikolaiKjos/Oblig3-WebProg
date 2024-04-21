@@ -28,7 +28,7 @@ public class billeterController {
         rep.endreEnBillet(billet);
     }
 
-    @DeleteMapping("/slettEn")
+    @GetMapping("/slettEn")
     public void slettEn(Integer id){
         rep.slettEn(id);
     }

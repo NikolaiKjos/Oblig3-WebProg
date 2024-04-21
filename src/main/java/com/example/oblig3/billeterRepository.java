@@ -22,7 +22,7 @@ public class billeterRepository {
     }
 
     public List<billeter> hentAlleBilleter() {
-        String sql = "SELECT * FROM billeter"; // ORDER BY billeter
+        String sql = "SELECT * FROM billeter ORDER BY etternavn";
         List<billeter> alleBilleter = db.query(sql, new BeanPropertyRowMapper(billeter.class));
         return alleBilleter;
     }
