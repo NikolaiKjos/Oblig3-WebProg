@@ -19,7 +19,7 @@ public class billeterController {
     public List<billeter> hentalle() {
         return rep.hentAlleBilleter();
     }
-    @GetMapping
+    @GetMapping("/hentEnBillet")
     public billeter hentEnBillet(Integer id){
         return rep.hentEnBillet(id);
     }
@@ -37,12 +37,6 @@ public class billeterController {
     public void slettalle(){
         rep.slettAlleBilleter();
     }
-
-
-    //@GetMapping("/endre")
-
-    //@PostMapping("/fyllinn")
-
 
 }
 

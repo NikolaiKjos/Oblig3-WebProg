@@ -27,12 +27,15 @@ public class billeterRepository {
         return alleBilleter;
     }
 
-    public billeter hentEnBillet(Integer id){
-    Object [] param = new Object[1];
-    param[0] = id;
-    String sql = "SELECT * FROM billeter WHERE id=?";
-    billeter enBillet = db.queryForObject(sql, param, BeanPropertyRowMapper.newInstance(billeter.class));
-    return enBillet;
+    public billeter hentEnBillet(Integer id) {
+        String sql = "SELECT * FROM billeter WHERE id=?";
+        Object[] param = new Object[]{id};
+        List<billeter> resultater = db.query(sql, param, BeanPropertyRowMapper.newInstance(billeter.class));
+        if (resultater.isEmpty()) {
+            return null;
+        } else {
+            return resultater.get(0);
+        }
     }
 
     public void endreEnBillet(billeter billet){
