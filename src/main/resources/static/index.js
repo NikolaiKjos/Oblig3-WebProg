@@ -1,4 +1,4 @@
-let billeter = []
+
 function regBillett(){
 
     $("#feilFilm").html(" ");
@@ -42,7 +42,7 @@ function regBillett(){
     }
 
 
-    const billet = {
+    const Billet = {
         film : film,
         antall : antall,
         fornavn : fornavn,
@@ -51,7 +51,7 @@ function regBillett(){
         telefon : telefon
     }
 
-    $.post("/lagre",billeter, function (){
+    $.post("/lagre",Billet, function (){
         hentAlle();
     });
 
@@ -77,7 +77,7 @@ function slettallebilletter(){
         type: "DELETE",
         url: "/slettalle",
         success: function () {
-            $("#billetter").html("");
+            $("#billeter").html("");
             $("#film").val("");
             $("#seter").val("");
             $("#fornavn").val("");
@@ -89,14 +89,24 @@ function slettallebilletter(){
 }
 
 function formaterData(billeter){
-    let ut = "  <table class='table table-striped'><tr>" +
-        "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefon</th><th>E-post</th>" +
+    var ut = "  <table class='table table-striped'>" +
+        "<tr>" +
+        "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefon</th><th>E-post</th><th></th><th></th>" +
         "</tr>";
-    for(const billetter of billeter){
-        ut += "<tr>";
-        ut += "<td>"+billetter.film +"</td><td>"+billetter.antall +"</td><td>"+billetter.fornavn +"</td><td>"+billetter.etternavn +"</td><td>"+billetter.telefon +"</td><td>"+billetter.epost +"</td>";
-        ut += "</tr>";
+    for(let b of billeter){
+        ut += "<tr>" +
+        "<td>"+billeter[b].film +"</td><td>"+billeter[b].antall +"</td><td>"+billeter[b].fornavn +"</td><td>"+billeter[b].etternavn +"</td><td>"+billeter[b].telefon +"</td><td>"+billeter[b].epost +"</td>"+
+        "<td> <button class='btn btn-danger' onclick='slettEn("+billeter[b].id+")'>Slett</button></td>"+
+        "</tr>";
     }
-    ut += "</table>";
-    $("#billetter").html(ut);
+
+    $("#billeter").html(ut);
 }
+
+function slettEn(id) {
+    const url = "/slettEn?id="+id;
+    $.get(url, function () {
+        window.location.href = 'index.html'
+    });
+}
+

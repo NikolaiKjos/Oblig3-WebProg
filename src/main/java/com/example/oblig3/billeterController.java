@@ -11,16 +11,38 @@ public class billeterController {
     @Autowired
     billeterRepository rep;
     @PostMapping("/lagre")
-    public void Lagre(billeter Billett) {
-        rep.lagreBilleter(Billett);
+    public void Lagre(billeter billet) {
+        rep.lagreBilleter(billet);
     }
 
     @GetMapping("/hentalle")
     public List<billeter> hentalle() {
         return rep.hentAlleBilleter();
     }
+    @GetMapping
+    public billeter hentEnBillet(Integer id){
+        return rep.hentEnBillet(id);
+    }
+    @PostMapping("/endreEnKunde")
+    public void endreEnKunde(billeter billet){
+        rep.endreEnBillet(billet);
+    }
+
+    @DeleteMapping("/slettEn")
+    public void slettEn(Integer id){
+        rep.slettEn(id);
+    }
+
     @DeleteMapping("/slettalle")
     public void slettalle(){
         rep.slettAlleBilleter();
     }
+
+
+    //@GetMapping("/endre")
+
+    //@PostMapping("/fyllinn")
+
+
 }
+
