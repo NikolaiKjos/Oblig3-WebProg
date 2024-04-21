@@ -3,12 +3,12 @@ $(function (){
     const url = "/hentEnBillet?"+id;
     $.get(url, function (billet){
         $("#id").val(billet.id),
-        $("#film").val(billet.id),
-        $("#antall").val(billet.id),
-        $("#fornavn").val(billet.id),
-        $("#etternavn").val(billet.id),
-        $("#epost").val(billet.id),
-        $("#telefon").val(billet.id);
+        $("#film").val(billet.film),
+        $("#antall").val(billet.antall),
+        $("#fornavn").val(billet.fornavn),
+        $("#etternavn").val(billet.etternavn),
+        $("#epost").val(billet.epost),
+        $("#telefon").val(billet.telefon);
     });
 });
 
