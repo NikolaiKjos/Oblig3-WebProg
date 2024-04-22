@@ -13,6 +13,47 @@ $(function (){
 });
 
 function endreBillet(){
+
+    $("#feilFilm").html(" ");
+    $("#feilAntall").html(" ");
+    $("#feilFornavn").html(" ");
+    $("#feilEtternavn").html(" ");
+    $("#feilEpost").html(" ");
+    $("#feilTelefon").html(" ");
+
+    const film = $("#film").val();
+    const antall = parseInt($("#antall").val());
+    const fornavn = $("#fornavn").val();
+    const etternavn = $("#etternavn").val();
+    const epost = $("#epost").val();
+    const sjekkMail = /^[\w\.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+    const telefon = $("#telefon").val();
+
+    if(film === ""){
+        $("#feilFilm").html("Ugyldig input")
+        return;
+    }
+    if (isNaN(antall)){
+        $("#feilAntall").html("Ugyldig valg")
+        return;
+    }
+    if (fornavn.trim()==="" || /^\d+$/.test(fornavn)){
+        $("#feilFornavn").html("Ugyldig input")
+        return;
+    }
+    if (etternavn.trim()==="" || /^\d+$/.test(etternavn)){
+        $("#feilEtternavn").html("Ugyldig input")
+        return;
+    }
+    if (isNaN(telefon) || Number.isFinite(telefon)){
+        $("#feilTelefon").html("Ugyldig input")
+        return;
+    }
+    if(!sjekkMail.test(epost)){
+        $("#feilEpost").html("Ugyldig input")
+        return;
+    }
+
     const billet = {
     id : $("#id").val(),
     film : $("#film").val(),
@@ -23,6 +64,7 @@ function endreBillet(){
     telefon : $("#telefon").val()
     }
     $.post("/endreEnKunde", billet, function (){
-        window.location.href = 'index.html';
+
     });
+    window.location.href = '/index.html';
 }

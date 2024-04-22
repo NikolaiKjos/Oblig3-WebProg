@@ -24,15 +24,15 @@ function regBillett(){
         $("#feilAntall").html("Ugyldig valg")
         return;
     }
-    if (fornavn === ""){
+    if (fornavn.trim()==="" || /^\d+$/.test(fornavn)){
         $("#feilFornavn").html("Ugyldig input")
         return;
     }
-    if (etternavn === ""){
+    if (etternavn.trim()==="" || /^\d+$/.test(etternavn)){
         $("#feilEtternavn").html("Ugyldig input")
         return;
     }
-    if (isNaN(telefon) || telefon === ""){
+    if (isNaN(telefon) || Number.isFinite(telefon)){
         $("#feilTelefon").html("Ugyldig input")
         return;
     }
@@ -106,7 +106,7 @@ function formaterData(billeter){
 function slettEn(id) {
     const url = "/slettEn?id="+id;
     $.get(url, function () {
-        window.location.href = 'index.html';
+        hentAlle();
     });
 };
 
