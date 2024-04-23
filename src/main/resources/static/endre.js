@@ -64,7 +64,6 @@ function endreBillet(){
     telefon : $("#telefon").val()
     }
     $.post("/endreEnKunde", billet, function (){
-
     });
-    window.location.href = '/index.html';
+    window.location.href = 'index.html';
 }
